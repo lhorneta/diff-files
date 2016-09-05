@@ -1,0 +1,72 @@
+<div class="jumbotron">
+  <div class="container">
+
+    <h2>Diff files</h2>
+      <div class="col-lg-12">
+        <form
+          id="uploadForm"
+          class="form-horizontal"
+          enctype="multipart/form-data"
+          method="post">
+
+          <div class="form-group col-lg-9">
+            <div class="col-sm-2">
+              <label for="first-file" class="control-label col-sm4">First file</label>
+            </div>
+            <div class="col-sm-5"> 
+                <input type="file" ng-model="compare" data-file="upload" accept="text/*,text/txt" onchange="scope.uploadFile(this)" class="btn btn-default" name="file" />
+            </div>
+
+          </div>
+        </form>
+
+        <form
+          id="uploadForm2"
+          class="form-horizontal"
+          enctype="multipart/form-data"
+          method="post">
+
+          <div class="form-group col-lg-9">
+
+            <div class="col-sm-2">
+              <label for="second-file" class="control-label">Second file</label>
+            </div>
+            <div class="col-sm-5">
+              <input type="file" data-file="upload2" ng-model="compare"accept="text/*,text/txt" onchange="scope.uploadFile(this)" class="btn btn-default" name="file2" />
+            </div>
+
+          </div>
+
+        </form>
+
+      </div>
+
+    <div class="col-lg-4">
+      <p>
+        <button type="button" ng-disabled="!compare" ng-click="showCompare()" class="btn btn-success btn-lg btn-block">Compare</button>
+      </p>
+    </div>
+
+  </div>
+</div>
+
+
+<div id="ng-app" ng-show="showTable">
+  <div layout="column" flex>
+      <md-content flex layout-padding>
+        <div flex layout="column">
+          <div flex layout="column" layout-gt-md="row">
+            <md-card flex>
+              <md-card-content>
+                <div layout="row">
+                  <h2>lineDiff</h2>
+                  <span flex></span>
+                </div>
+                <pre class="textdiff" line-diff left-obj="left" right-obj="right" options="options"></pre>
+              </md-card-content>
+            </md-card>
+          </div>
+        </div>
+      </md-content>
+  </div>
+</div>
